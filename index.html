@@ -1,33 +1,24 @@
 <!doctype html>
-<html lang="pt-br" class="dark">
+<html lang="pt-br">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>G‑Chat - Atendimento via WhatsApp | GTI TECH</title>
-  <meta name="description" content="G‑Chat é um SaaS de atendimento via WhatsApp com múltiplos atendentes, chatbots e relatórios — integrado à API oficial (WABA)." />
-  <link rel="icon" type="image/ico" href="assets/favicon.ico">
+  <title>G-Chat — Atendimento via WhatsApp | GTI TECH</title>
+  <meta name="description" content="G-Chat: atendimento via WhatsApp com múltiplos atendentes, chatbots e relatórios — integrado à API oficial do WhatsApp." />
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root { --brand: #f58634; }
-    html.dark { color-scheme: dark; }
-    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
-    .container { max-width: 1120px; }
-    .btn-brand { background: var(--brand); color: #111827; }
-    .btn-brand:hover { filter: brightness(0.95); }
-    .chip { border: 1px solid rgb(255 255 255 / 0.12); padding: 6px 10px; border-radius: 999px; font-size: 12px; }
-    .floating-wa { position: fixed; right: 16px; bottom: 16px; z-index: 70; }
-  </style>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body class="bg-zinc-950 text-zinc-100">
+<body>
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-zinc-900/80 backdrop-blur border-b border-zinc-800">
+  <header class="sticky top-0 z-50 bg-surface backdrop-blur border-b border-var">
     <div class="container mx-auto px-4 py-3 flex items-center justify-between">
       <a href="#home" class="flex items-center gap-3 font-semibold">
         <img src="assets/logo-gti-gchat.png" alt="Logo Grupo GTI - G-Chat" class="h-8 w-auto" />
-        <span class="hidden sm:inline">G‑Chat</span>
+        <span class="hidden sm:inline">G-Chat</span>
       </a>
       <nav class="hidden md:flex items-center gap-6 text-sm text-zinc-300">
         <a href="#como-funciona" class="hover:text-white">Como funciona</a>
@@ -44,92 +35,92 @@
   </header>
 
   <!-- Hero -->
-  <section id="home" class="bg-gradient-to-b from-zinc-900 to-zinc-950">
+  <section id="home" class="bg-surface border-b border-var">
     <div class="container mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
       <div>
         <h1 class="text-3xl md:text-5xl font-semibold leading-tight">Atendimento profissional via WhatsApp com sua equipe em um só lugar</h1>
-        <p class="mt-4 text-zinc-300 text-lg">O <strong>G‑Chat</strong> centraliza conversas, permite múltiplos atendentes, organiza filas, tags e histórico — com chatbots e relatórios, integrado à API oficial do WhatsApp Business (WABA).</p>
-        <p class="mt-3 text-zinc-400">Fornecido por <span class="font-medium">GTI TECH</span> — CNPJ 35.803.776/0001‑24.</p>
+        <p class="mt-4 text-zinc-300 text-lg">O <strong>G-Chat</strong> centraliza conversas, permite múltiplos atendentes, organiza filas, tags e histórico — com chatbots e relatórios, integrado à API oficial do WhatsApp Business (WABA).</p>
+        <p class="mt-3 text-zinc-400">Fornecido por <span class="font-medium">GTI TECH</span> — CNPJ 35.803.776/0001-24.</p>
         <div class="mt-6 flex gap-3">
           <a href="#como-funciona" class="px-5 py-3 rounded-xl btn-brand">Como funciona</a>
-          <button onclick="openWA('Olá! Gostaria de agendar uma demonstração do G-Chat.')" class="px-5 py-3 rounded-xl border border-zinc-700">Agendar demonstração</button>
+          <button onclick="openWA('Olá! Gostaria de agendar uma demonstração do G-Chat.')" class="px-5 py-3 rounded-xl border border-var">Agendar demonstração</button>
         </div>
       </div>
       <!-- Carousel -->
-      <div class="rounded-2xl border border-zinc-800 bg-zinc-900 p-4 shadow-sm">
+      <div class="rounded-2xl border border-var surface p-4 shadow-sm">
         <div class="relative overflow-hidden rounded-xl" id="heroCarousel">
           <div class="whitespace-nowrap transition-transform duration-500" id="heroTrack">
-            <img alt="Tela de atendimento do G‑Chat" class="inline-block w-full align-top" src="assets/atendimento.png" />
-            <img alt="Painel de controle do G‑Chat" class="inline-block w-full align-top" src="assets/painel.png" />
+            <img alt="Tela de atendimento do G-Chat" class="inline-block w-full align-top" src="assets/atendimento.png" />
+            <img alt="Painel de controle do G-Chat" class="inline-block w-full align-top" src="assets/painel.png" />
           </div>
-          <button aria-label="Anterior" id="heroPrev" class="absolute left-2 top-1/2 -translate-y-1/2 px-2 py-1 rounded-lg bg-zinc-800/70 border border-zinc-700">‹</button>
-          <button aria-label="Próximo" id="heroNext" class="absolute right-2 top-1/2 -translate-y-1/2 px-2 py-1 rounded-lg bg-zinc-800/70 border border-zinc-700">›</button>
+          <button aria-label="Anterior" id="heroPrev" class="absolute left-2 top-1/2 -translate-y-1/2 px-2 py-1 rounded-lg bg-black/20 border border-var">‹</button>
+          <button aria-label="Próximo" id="heroNext" class="absolute right-2 top-1/2 -translate-y-1/2 px-2 py-1 rounded-lg bg-black/20 border border-var">›</button>
           <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
             <span class="h-2 w-2 rounded-full bg-white/70" data-dot="0"></span>
             <span class="h-2 w-2 rounded-full bg-white/30" data-dot="1"></span>
           </div>
         </div>
-        <div class="mt-3 text-sm text-zinc-400">Exemplos de telas do G‑Chat: atendimento e painel.</div>
+        <div class="mt-3 text-sm text-zinc-400">Exemplos de telas do G-Chat: atendimento e painel.</div>
       </div>
     </div>
   </section>
 
   <!-- Como funciona -->
-  <section id="como-funciona" class="py-16 border-t border-zinc-800 bg-zinc-900">
+  <section id="como-funciona" class="py-16">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-semibold">Como funciona</h2>
-      <p class="mt-3 text-zinc-300 max-w-3xl">Conectamos o seu número à API oficial da Meta. Se você ainda não tem Business Manager e WABA, criamos tudo durante o processo. Em poucos passos sua equipe já atende no G‑Chat.</p>
+      <p class="mt-3 text-zinc-300 max-w-3xl">Conectamos o seu número à API oficial da Meta via fluxo <em>Embedded Signup</em>. Se você ainda não tem Business Manager e WABA, criamos tudo durante o processo. Em poucos passos sua equipe já atende no G-Chat.</p>
       <div class="mt-8 grid md:grid-cols-4 gap-4">
-        <div class="p-5 rounded-2xl border border-zinc-800 bg-zinc-950">
+        <div class="p-5 rounded-2xl border border-var surface">
           <div class="text-sm text-zinc-400">Passo 1</div>
           <div class="mt-1 font-medium">Conexão</div>
-          <div class="mt-2 text-sm text-zinc-300">Inicie pelo G‑Chat, faça login na Meta e selecione/crie seu Business Manager.</div>
+          <div class="mt-2 text-sm text-zinc-300">Inicie pelo G-Chat, faça login na Meta e selecione/crie seu Business Manager.</div>
         </div>
-        <div class="p-5 rounded-2xl border border-zinc-800 bg-zinc-950">
+        <div class="p-5 rounded-2xl border border-var surface">
           <div class="text-sm text-zinc-400">Passo 2</div>
           <div class="mt-1 font-medium">Número & Nome</div>
           <div class="mt-2 text-sm text-zinc-300">Escolha o número e defina o nome de exibição do WhatsApp Business.</div>
         </div>
-        <div class="p-5 rounded-2xl border border-zinc-800 bg-zinc-950">
+        <div class="p-5 rounded-2xl border border-var surface">
           <div class="text-sm text-zinc-400">Passo 3</div>
           <div class="mt-1 font-medium">Verificação</div>
           <div class="mt-2 text-sm text-zinc-300">Valide o número por SMS/voz. A verificação do negócio pode ser concluída depois.</div>
         </div>
-        <div class="p-5 rounded-2xl border border-zinc-800 bg-zinc-950">
+        <div class="p-5 rounded-2xl border border-var surface">
           <div class="text-sm text-zinc-400">Passo 4</div>
           <div class="mt-1 font-medium">Pronto!</div>
-          <div class="mt-2 text-sm text-zinc-300">Conversas chegam no G‑Chat com multiatendimento, histórico e relatórios.</div>
+          <div class="mt-2 text-sm text-zinc-300">Conversas chegam no G-Chat com multiatendimento, histórico e relatórios.</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Recursos -->
-  <section id="recursos" class="py-16 bg-zinc-950 border-t border-zinc-800">
+  <section id="recursos" class="py-16">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-semibold">Recursos que aceleram seu atendimento</h2>
       <div class="mt-8 grid md:grid-cols-3 gap-4">
-        <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900">
+        <div class="p-6 rounded-2xl border border-var surface">
           <div class="text-lg font-medium">Multiatendimento</div>
           <div class="mt-2 text-zinc-300 text-sm">Vários atendentes em um único número, com filas e distribuição inteligente.</div>
         </div>
-        <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900">
+        <div class="p-6 rounded-2xl border border-var surface">
           <div class="text-lg font-medium">Chatbots</div>
           <div class="mt-2 text-zinc-300 text-sm">Crie fluxos automatizados para triagem, FAQ e tarefas recorrentes.</div>
         </div>
-        <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900">
+        <div class="p-6 rounded-2xl border border-var surface">
           <div class="text-lg font-medium">Templates oficiais</div>
           <div class="mt-2 text-zinc-300 text-sm">Envie mensagens modelo aprovadas pela Meta para marketing, serviço e autenticação.</div>
         </div>
-        <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900">
+        <div class="p-6 rounded-2xl border border-var surface">
           <div class="text-lg font-medium">Relatórios</div>
           <div class="mt-2 text-zinc-300 text-sm">Métricas de volume, tempo de resposta, filas, usuários e satisfação.</div>
         </div>
-        <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900">
+        <div class="p-6 rounded-2xl border border-var surface">
           <div class="text-lg font-medium">Mídias & Catálogo</div>
           <div class="mt-2 text-zinc-300 text-sm">Suporte a texto, imagens, documentos e catálogo de produtos.</div>
         </div>
-        <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900">
+        <div class="p-6 rounded-2xl border border-var surface">
           <div class="text-lg font-medium">Permissões</div>
           <div class="mt-2 text-zinc-300 text-sm">Perfis para administradores, supervisores e atendentes.</div>
         </div>
@@ -138,7 +129,7 @@
   </section>
 
   <!-- Integrações/Diferenciais -->
-  <section id="integracoes" class="py-16 bg-zinc-900 border-t border-zinc-800">
+  <section id="integracoes" class="py-16">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-semibold">Integrações & Diferenciais</h2>
       <p class="mt-3 text-zinc-300 max-w-3xl">Flexível e multicanal: API oficial do WhatsApp (<strong>WABA</strong>) e integrações com Instagram, Facebook Messenger, Telegram, webchat, webmail — além de IA (ChatGPT, Gemini) e automações (N8N, Typebot).</p>
@@ -157,33 +148,16 @@
     </div>
   </section>
 
-  <!-- Screenshots -->
-  <section class="py-16 bg-zinc-950 border-t border-zinc-800">
-    <div class="container mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-semibold">Visão do produto</h2>
-      <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <figure class="rounded-2xl border border-zinc-800 bg-zinc-900 p-3">
-          <img src="assets/atendimento.png" alt="Tela de atendimento do G‑Chat" class="rounded-xl" />
-          <figcaption class="mt-2 text-sm text-zinc-400">Tela de atendimento com mensagens, quick actions e dados do contato.</figcaption>
-        </figure>
-        <figure class="rounded-2xl border border-zinc-800 bg-zinc-900 p-3">
-          <img src="assets/painel.png" alt="Painel de controle do G‑Chat" class="rounded-xl" />
-          <figcaption class="mt-2 text-sm text-zinc-400">Painel de controle com métricas e gráficos.</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
   <!-- Segurança & LGPD -->
-  <section id="seguranca" class="py-16 bg-zinc-900 border-t border-zinc-800">
+  <section id="seguranca" class="py-16">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-semibold">Segurança & LGPD</h2>
       <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-950">
+        <div class="p-6 rounded-2xl border border-var surface">
           <div class="font-medium">Proteção de dados</div>
           <p class="mt-2 text-sm text-zinc-300">Dados de conversas são tratados apenas para prestação do serviço contratado, com controles de acesso, criptografia em trânsito (HTTPS/TLS) e registros de auditoria.</p>
         </div>
-        <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-950">
+        <div class="p-6 rounded-2xl border border-var surface">
           <div class="font-medium">Conformidade</div>
           <p class="mt-2 text-sm text-zinc-300">Atendemos aos requisitos da API oficial do WhatsApp Business e seguimos os princípios da LGPD. A propriedade do número e do WABA é do cliente.</p>
         </div>
@@ -192,12 +166,12 @@
   </section>
 
   <!-- Planos -->
-  <section id="planos" class="py-16 bg-zinc-950 border-t border-zinc-800">
+  <section id="planos" class="py-16">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-semibold">Planos</h2>
       <p class="mt-2 text-zinc-300">Escolha a melhor forma de começar. Você pode escalar números e atendentes a qualquer momento.</p>
       <div class="mt-8 grid md:grid-cols-2 gap-4">
-        <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900">
+        <div class="p-6 rounded-2xl border border-var surface">
           <div class="text-lg font-semibold">Teste grátis</div>
           <div class="mt-1 text-2xl">7 dias</div>
           <ul class="mt-3 text-sm text-zinc-300 space-y-1 list-disc list-inside">
@@ -209,7 +183,7 @@
           </ul>
           <button onclick="openWA('Olá! Gostaria de fazer o teste grátis do G-Chat.')" class="mt-4 inline-block px-4 py-2 rounded-xl btn-brand text-sm">Começar agora</button>
         </div>
-        <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900">
+        <div class="p-6 rounded-2xl border border-var surface">
           <div class="text-lg font-semibold">Profissional</div>
           <div class="mt-1 text-2xl">a partir de R$ 189,90/mês</div>
           <ul class="mt-3 text-sm text-zinc-300 space-y-1 list-disc list-inside">
@@ -226,56 +200,56 @@
   </section>
 
   <!-- FAQ -->
-  <section class="py-16 bg-zinc-900 border-t border-zinc-800">
+  <section class="py-16">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-semibold">Perguntas frequentes</h2>
       <div class="mt-6 space-y-4">
-        <details class="p-5 rounded-2xl border border-zinc-800 bg-zinc-950">
+        <details class="p-5 rounded-2xl border border-var surface">
           <summary class="cursor-pointer font-medium">Preciso ter Business Manager e WABA prontos?</summary>
           <p class="mt-2 text-sm text-zinc-300">Não. Criamos tudo no fluxo de Embedded Signup durante a conexão. O WABA e o número ficam no nome da sua empresa.</p>
         </details>
-        <details class="p-5 rounded-2xl border border-zinc-800 bg-zinc-950">
+        <details class="p-5 rounded-2xl border border-var surface">
           <summary class="cursor-pointer font-medium">Posso usar o número que já está no WhatsApp do celular?</summary>
           <p class="mt-2 text-sm text-zinc-300">Sim. A migração é guiada no processo de conexão. É necessário receber um código por SMS/voz.</p>
         </details>
-        <details class="p-5 rounded-2xl border border-zinc-800 bg-zinc-950">
+        <details class="p-5 rounded-2xl border border-var surface">
           <summary class="cursor-pointer font-medium">Como funciona a cobrança?</summary>
-          <p class="mt-2 text-sm text-zinc-300">Cobramos a assinatura do G‑Chat. Já as conversas via WhatsApp seguem a precificação oficial da Meta por categoria.</p>
+          <p class="mt-2 text-sm text-zinc-300">Cobramos a assinatura do G-Chat. Já as conversas via WhatsApp seguem a precificação oficial da Meta por categoria.</p>
         </details>
-        <details class="p-5 rounded-2xl border border-zinc-800 bg-zinc-950">
+        <details class="p-5 rounded-2xl border border-var surface">
           <summary class="cursor-pointer font-medium">Quem é o dono dos dados e do número?</summary>
-          <p class="mt-2 text-sm text-zinc-300">O cliente. O G‑Chat apenas processa os dados para prestação do serviço, conforme LGPD e termos firmados.</p>
+          <p class="mt-2 text-sm text-zinc-300">O cliente. O G-Chat apenas processa os dados para prestação do serviço, conforme LGPD e termos firmados.</p>
         </details>
       </div>
     </div>
   </section>
 
   <!-- Contato -->
-  <section id="contato" class="py-16 bg-zinc-950 border-t border-zinc-800">
+  <section id="contato" class="py-16">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-semibold">Fale com a gente</h2>
       <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900">
+        <div class="p-6 rounded-2xl border border-var surface">
           <div class="font-medium">Dados da empresa</div>
           <ul class="mt-3 text-sm text-zinc-300 space-y-1">
             <li><span class="text-zinc-400">Razão social:</span> RAFAEL ANDRADE BARRETO DE BRITO</li>
             <li><span class="text-zinc-400">Nome fantasia:</span> GTI TECH</li>
-            <li><span class="text-zinc-400">CNPJ:</span> 35.803.776/0001‑24</li>
+            <li><span class="text-zinc-400">CNPJ:</span> 35.803.776/0001-24</li>
             <li><span class="text-zinc-400">Endereço:</span> R ALMIRA ANDRADE, nº 44, QUITANDINHA, SANTO ANTONIO DE JESUS - BA, CEP 44.440-520</li>
-            <li><span class="text-zinc-400">E‑mail:</span> <a href="mailto:contato@gtigrupo.com.br" class="underline decoration-zinc-600 hover:decoration-zinc-300">contato@gtigrupo.com.br</a></li>
-            <li><span class="text-zinc-400">Telefone:</span> (75) 3631‑6367 • WhatsApp (75) 9.8110‑7777</li>
+            <li><span class="text-zinc-400">E-mail:</span> <a href="mailto:contato@gtigrupo.com.br" class="underline decoration-zinc-600 hover:decoration-zinc-300">contato@gtigrupo.com.br</a></li>
+            <li><span class="text-zinc-400">Telefone:</span> (75) 3631-6367 • WhatsApp (75) 9.8110-7777</li>
             <li><span class="text-zinc-400">Instagram:</span> <a class="underline decoration-zinc-600 hover:decoration-zinc-300" href="https://instagram.com/gti.tech" target="_blank" rel="noopener">@gti.tech</a></li>
-            <li><span class="text-zinc-400">Site:</span> <a class="underline decoration-zinc-600 hover:decoration-zinc-300" href="https://gtigrupo.com.br" target="_blank" rel="noopener">www.gtigrupo.com.br</a></li>
+            <li><span class="text-zinc-400">Site:</span> <a class="underline decoration-zinc-600 hover:decoration-zinc-300" href="https://gchat.gtigrupo.com.br" target="_blank" rel="noopener">gchat.gtigrupo.com.br</a></li>
           </ul>
           <div class="mt-4 text-xs text-zinc-400">Horário de atendimento: Seg–Sex, 8h–18h (horário de Brasília)</div>
         </div>
-        <form class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900" onsubmit="return submitWA(this)">
+        <form class="p-6 rounded-2xl border border-var surface" onsubmit="return submitWA(this)">
           <label class="block text-sm">Seu nome</label>
-          <input name="nome" class="mt-1 w-full rounded-xl border border-zinc-800 bg-zinc-950 px-3 py-2 focus:outline-none" placeholder="Digite seu nome" required />
+          <input name="nome" class="mt-1 w-full rounded-xl border border-var bg-transparent px-3 py-2 focus:outline-none" placeholder="Digite seu nome" required />
           <label class="block text-sm mt-4">Telefone (WhatsApp)</label>
-          <input name="fone" class="mt-1 w-full rounded-xl border border-zinc-800 bg-zinc-950 px-3 py-2 focus:outline-none" placeholder="(DDD) 9xxxx-xxxx" />
+          <input name="fone" class="mt-1 w-full rounded-xl border border-var bg-transparent px-3 py-2 focus:outline-none" placeholder="(DDD) 9xxxx-xxxx" />
           <label class="block text-sm mt-4">Mensagem</label>
-          <textarea name="msg" class="mt-1 w-full rounded-xl border border-zinc-800 bg-zinc-950 px-3 py-2 focus:outline-none" rows="4" placeholder="Conte mais sobre sua necessidade" required></textarea>
+          <textarea name="msg" class="mt-1 w-full rounded-xl border border-var bg-transparent px-3 py-2 focus:outline-none" rows="4" placeholder="Conte mais sobre sua necessidade" required></textarea>
           <button type="submit" class="mt-4 px-4 py-2 rounded-xl btn-brand text-sm">Enviar pelo WhatsApp</button>
           <div class="mt-2 text-xs text-zinc-400">* Ao enviar, abriremos uma conversa no WhatsApp com sua mensagem.</div>
         </form>
@@ -284,11 +258,11 @@
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-zinc-800 bg-zinc-900">
+  <footer class="border-t border-var bg-surface">
     <div class="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-6 text-sm">
       <div>
-        <div class="font-semibold">G‑Chat</div>
-        <p class="mt-2 text-zinc-300">Plataforma de atendimento via WhatsApp integrado à API oficial (WABA), com múltiplos atendentes, chatbots e relatórios.</p>
+        <div class="font-semibold">G-Chat</div>
+        <p class="mt-2 text-zinc-300">Plataforma de atendimento via WhatsApp integrada à API oficial (WABA), com múltiplos atendentes, chatbots e relatórios.</p>
       </div>
       <div>
         <div class="font-semibold">Empresa</div>
@@ -302,15 +276,16 @@
       <div>
         <div class="font-semibold">Legal</div>
         <ul class="mt-2 space-y-1 text-zinc-300">
-          <li><button class="hover:underline" onclick="openModal('privacy')">Política de Privacidade</button></li>
-          <li><button class="hover:underline" onclick="openModal('terms')">Termos de Uso</button></li>
+          <li><a class="hover:underline" href="privacy.html">Política de Privacidade</a></li>
+          <li><a class="hover:underline" href="terms.html">Termos de Uso</a></li>
+          <li><a class="hover:underline" href="data-deletion.html">Exclusão de dados</a></li>
           <li class="text-xs text-zinc-500">© <span id="year"></span> RAFAEL ANDRADE BARRETO DE BRITO (GTI TECH). Todos os direitos reservados.</li>
         </ul>
       </div>
       <div>
         <div class="font-semibold">Canais</div>
         <ul class="mt-2 space-y-1 text-zinc-300">
-          <li><a href="mailto:contato@gtigrupo.com.br" class="hover:underline">E‑mail</a></li>
+          <li><a href="mailto:contato@gtigrupo.com.br" class="hover:underline">E-mail</a></li>
           <li><a href="https://instagram.com/gti.tech" target="_blank" rel="noopener" class="hover:underline">Instagram</a></li>
         </ul>
       </div>
@@ -322,56 +297,14 @@
     <button onclick="openWA('Olá! Gostaria de falar sobre o G-Chat.')" class="px-4 py-3 rounded-full shadow-lg btn-brand font-medium">Olá! Tem alguma dúvida?</button>
   </div>
 
-  <!-- Modal -->
-  <div id="modal" class="fixed inset-0 hidden items-center justify-center bg-black/40 p-4">
-    <div class="max-w-3xl w-full bg-zinc-900 border border-zinc-800 rounded-2xl p-6 text-zinc-100">
-      <div class="flex items-center justify-between">
-        <div id="modalTitle" class="text-lg font-semibold"></div>
-        <button onclick="closeModal()" class="px-2 py-1 rounded-lg border border-zinc-700">Fechar</button>
-      </div>
-      <div id="modalContent" class="mt-4 prose prose-invert prose-sm max-w-none"></div>
-    </div>
-  </div>
-
   <script>
     // Config
-    const WAPP_NUMBER = '5575981107777'; // +55 (75) 98110-7777
+    const WAPP_NUMBER = '5575981107777';
 
-    // brand accents
-    document.documentElement.style.setProperty('--brand', '#f58634');
-
-    // Theme handling: default dark; avoid referencing themeBtn before it's in the DOM
-    (function initTheme(){
-      const ls = localStorage.getItem('theme');
-      if(ls === 'light') document.documentElement.classList.remove('dark');
-      else document.documentElement.classList.add('dark');
-      updateThemeBtn();
-    })();
-
-    // utils
+    // Footer year
     (function setYear(){
       const y = document.getElementById('year');
       if (y) y.textContent = new Date().getFullYear();
-    })();
-
-    function updateThemeBtn(){
-      const btn = document.getElementById('themeBtn');
-      if (!btn) return;
-      const isDark = document.documentElement.classList.contains('dark');
-      btn.textContent = isDark ? 'Modo claro' : 'Modo escuro';
-    }
-
-    // Set up theme button after DOM is parsed
-    (function bindThemeBtn(){
-      const btn = document.getElementById('themeBtn');
-      if (!btn) return;
-      btn.addEventListener('click', () => {
-        const html = document.documentElement;
-        const isDark = html.classList.contains('dark');
-        if(isDark){ html.classList.remove('dark'); localStorage.setItem('theme','light'); document.body.classList.remove('bg-zinc-950'); document.body.classList.add('bg-white'); }
-        else { html.classList.add('dark'); localStorage.setItem('theme','dark'); document.body.classList.remove('bg-white'); document.body.classList.add('bg-zinc-950'); }
-        updateThemeBtn();
-      });
     })();
 
     // WhatsApp helpers
@@ -388,75 +321,6 @@
       form.reset();
       return false;
     }
-
-    // Modal logic
-    function openModal(type){
-      const modal = document.getElementById('modal');
-      const title = document.getElementById('modalTitle');
-      const content = document.getElementById('modalContent');
-      if(type === 'privacy'){
-        title.textContent = 'Política de Privacidade';
-        content.innerHTML = `
-          <p>Esta Política de Privacidade descreve como <strong>RAFAEL ANDRADE BARRETO DE BRITO</strong> ("GTI TECH") trata dados pessoais no contexto do serviço <strong>G‑Chat</strong>.</p>
-          <h3>Dados tratados</h3>
-          <ul>
-            <li>Dados de conta e faturamento do cliente (razão social, CNPJ, e‑mail, telefone).</li>
-            <li>Dados operacionais de atendimento (mensagens, mídias e metadados trafegados pelo WhatsApp Business).</li>
-          </ul>
-          <h3>Finalidades</h3>
-          <ul>
-            <li>Prestar e aprimorar o serviço contratado (inbox, relatórios, templates, chatbots).</li>
-            <li>Suporte técnico, segurança e prevenção a fraudes.</li>
-            <li>Cumprimento de obrigações legais e regulatórias.</li>
-          </ul>
-          <h3>Base legal</h3>
-          <p>Execução de contrato e legítimo interesse, conforme a LGPD.</p>
-          <h3>Compartilhamento</h3>
-          <p>Com provedores essenciais (infraestrutura em nuvem) e com a Meta para uso da API oficial do WhatsApp Business, vinculados às finalidades acima.</p>
-          <h3>Segurança</h3>
-          <p>Criptografia em trânsito (HTTPS/TLS), controles de acesso e auditoria. O cliente gere acessos de seus usuários no G‑Chat.</p>
-          <h3>Direitos do titular</h3>
-          <p>Para acesso, correção, exclusão ou portabilidade, contate: <strong>gti@gtigrupo.com.br</strong>.</p>
-          <h3>Retenção</h3>
-          <p>Retemos dados pelo período necessário à prestação do serviço e cumprimento de obrigações legais.</p>
-          <h3>Contato</h3>
-          <p>Encarregado (DPO): gti@gtigrupo.com.br</p>
-          <p>Última atualização: ${new Date().toLocaleDateString()}</p>
-        `;
-      } else {
-        title.textContent = 'Termos de Uso';
-        content.innerHTML = `
-          <p>Estes Termos de Uso regulam o acesso e utilização do serviço <strong>G‑Chat</strong> fornecido por <strong>RAFAEL ANDRADE BARRETO DE BRITO (GTI TECH)</strong>.</p>
-          <h3>Conta e acesso</h3>
-          <p>O cliente é responsável por manter credenciais seguras e por atividades realizadas por seus usuários autorizados.</p>
-          <h3>Uso aceitável</h3>
-          <p>É proibido usar o serviço para fins ilegais, envio de spam, violação de direitos de terceiros ou descumprimento das políticas da Meta/WhatsApp.</p>
-          <h3>Planos e cobrança</h3>
-          <p>A assinatura do G‑Chat é cobrada conforme o plano; as conversas da API do WhatsApp são faturadas pela Meta.</p>
-          <h3>Suporte e SLA</h3>
-          <p>Suporte por e‑mail; em planos Profissional, suporte priorizado.</p>
-          <h3>Rescisão</h3>
-          <p>Podemos suspender ou encerrar o acesso em caso de violação destes Termos ou inadimplência.</p>
-          <h3>Responsabilidade</h3>
-          <p>Limite de responsabilidade até o valor pago nos 12 meses anteriores ao evento, na máxima extensão permitida por lei.</p>
-          <h3>Foro</h3>
-          <p>Fica eleito o foro da comarca de <strong>SANTO ANTONIO DE JESUS - BA</strong>.</p>
-          <p>Última atualização: ${new Date().toLocaleDateString()}</p>
-        `;
-      }
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    }
-    function closeModal(){
-      const modal = document.getElementById('modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
-
-    // fecha modal ao clicar fora do conteúdo
-    document.getElementById('modal').addEventListener('click', (e) => {
-      if(e.target.id === 'modal') closeModal();
-    });
 
     // Simple carousel logic
     (function initCarousel(){
