@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Conectar WhatsApp — G-Chat (Embedded Signup)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Recomendado: seu App ID para og/debug -->
+  <meta property="fb:1147298177261296" content="APP_ID">
+
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; background:#0b0b0e; color:#e5e7eb }
+    .wrap { max-width:720px; margin:40px auto; padding:0 16px }
+    .card { background:#0f0f14; border:1px solid #2a2a2e; border-radius:16px; padding:24px }
+    .btn  { background:#f58634; color:#111827; border:0; border-radius:12px; padding:12px 18px; font-weight:600; cursor:pointer }
+    .muted{ color:#cbd5e1; font-size:14px }
+    code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace }
+    #status { margin-top:12px; font-size:14px }
+    .log { white-space:pre-wrap; font-size:12px; background:#0b0b0e; border:1px solid #2a2a2e; border-radius:12px; padding:12px; margin-top:12px; max-height:220px; overflow:auto }
+  </style>
+
+  <script>
+    // 1) Inicializa SDK assim que carregar
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '1147298177261296',          // << TROQUE pelo seu App ID
+        autoLogAppEvents: true,
+        xfbml: false,
+        version: 'v22.0'          // versão do Graph (atual em 2025)
+      });
+      log('FB SDK pronto');
+    };
+
+    // 2) Carrega a SDK (pt_BR)
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/pt_BR/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function launchEmbeddedSignup(){
+      log('Abrindo Embedded Signup…');
+      FB.login(function (response) {
+        log('FB.login response:\n' + JSON.stringify(response, null, 2));
+
+        // Sucesso: vem um authorization CODE
+        if (response && response.authResponse && response.authResponse.code) {
+          var code = response.authResponse.code;
+          document.getElementById('status').textContent =
+            'Código recebido (parcial): ' + code.substring(0, 10) + '…';
+
+          // >>> Envie o CODE ao seu backend para troca por System User Access Token
+          // fetch('/api/meta/exchange-code', {
+          //   method: 'POST',
+          //   headers: { 'Content-Type': 'application/json' },
+          //   body: JSON.stringify({ code })
+          // }).then(r => r.json()).then(data => {
+          //   log('Token trocado no backend:\n' + JSON.stringify(data, null, 2));
+          // }).catch(e => log('Erro no exchange: ' + e.message));
+
+        } else {
+          document.getElementById('status').textContent =
+            'Fluxo cancelado ou sem código (ver console/log).';
+        }
+      }, {
+        // 3) Parâmetros do Embedded Signup
+        config_id: '1868835220508035',        // << TROQUE pelo seu Configuration ID
+        response_type: 'code',
+        override_default_response_type: true,
+
+        // extras opcionais (mantém compatibilidade com variações do fluxo)
+        extras: {
+          setup: {},                   // pode pré-preencher dados aqui
+          featureType: '',
+          sessionInfoVersion: '3'
+        }
+      });
+    }
+
+    // 4) Ouve eventos postMessage do iFrame do ES (útil para debug/progresso)
+    window.addEventListener('message', function (event) {
+      if (event.origin !== "https://www.facebook.com" &&
+          event.origin !== "https://web.facebook.com") return;
+      try {
+        var data = JSON.parse(event.data);
+        if (data.type === 'WA_EMBEDDED_SIGNUP') {
+          log('Evento ES:\n' + JSON.stringify(data, null, 2));
+        }
+      } catch(e) {
+        // ignora payloads não-JSON
+      }
+    });
+
+    // Helpers de log
+    function log(msg){
+      var box = document.getElementById('log');
+      box.textContent += (box.textContent ? '\n' : '') + msg;
+    }
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Conectar WhatsApp ao G-Chat</h1>
+    <p class="muted">
+      Clique no botão abaixo para iniciar o fluxo oficial <strong>Embedded Signup</strong>
+      da Meta. Ao concluir, seu WhatsApp Business será conectado ao G-Chat.
+    </p>
+
+    <div class="card">
+      <button class="btn" onclick="launchEmbeddedSignup()">Conectar com WhatsApp Business</button>
+      <div id="status" class="muted"></div>
+      <div id="log" class="log" aria-live="polite"></div>
+      <p class="muted">
+        Dica: se o número ainda estiver no WhatsApp do celular, desative o app antes de conectar.
+      </p>
+    </div>
+
+    <p class="muted">
+      Observação: esta página é <span class="mono">HTML + JS</span> apenas. A troca do
+      <span class="mono">code</span> por token de Sistema (System User Access Token) deve ser feita no
+      seu backend. Depois, **assine o WABA** para receber webhooks:
+      <span class="mono">POST /{WABA_ID}/subscribed_apps</span>. Você pode também sobrescrever o
+      callback por WABA se quiser URLs diferentes por cliente. :contentReference[oaicite:2]{index=2}
+    </p>
+  </div>
+</body>
+</html>
